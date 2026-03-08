@@ -56,7 +56,5 @@ namespace TodoManager.Application.Services
 
             _repository.Remove(todo);
         }
-
-
     }
 }
