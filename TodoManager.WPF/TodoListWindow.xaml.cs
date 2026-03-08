@@ -57,20 +57,30 @@ namespace TodoManager.WPF
         private void TodosListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // TODO: retrieve selected todo
-            TodoItem todoItem = todosListBox.SelectedItem as TodoItem;
-
             // TODO: call ClearDetails & return if null
-            if (todoItem == null)
+            
+            //Inefficient way
+            //TodoItem? todoItem = todosListBox.SelectedItem as TodoItem;
+            //if (todoItem == null)
+            //{
+            //    ClearDetails();
+            //    return;
+            //}
+
+            //Cool way
+            if (todosListBox.SelectedItem is TodoItem todoItem)
+            {
+                // TODO: display details in TitleTextBlock, DueDateTextBlock, DescriptionTextBox, CompletedTextBlock, CompletedAtTextBlock
+                titleTextBlock.Text = todoItem.Title;
+                dueDateTextBlock.Text = todoItem.DueDate.ToString();
+                descriptionTextBlock.Text = todoItem.Description ?? "No description";
+                completedTextBlock.Text = todoItem.IsCompleted.ToString();
+                completedAtTextBlock.Text = todoItem.CompletedAt.ToString() ?? "Not completed";
+            }
+            else
             {
                 ClearDetails();
-                return;
             }
-            // TODO: display details in TitleTextBlock, DueDateTextBlock, DescriptionTextBox, CompletedTextBlock, CompletedAtTextBlock
-            titleTextBlock.Text = todoItem.Title;
-            dueDateTextBlock.Text = todoItem.DueDate.ToString();
-            descriptionTextBlock.Text = todoItem.Description ?? "No description";
-            completedTextBlock.Text = todoItem.IsCompleted.ToString();
-            completedAtTextBlock.Text = todoItem.CompletedAt.ToString() ?? "Not completed";
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -86,6 +96,7 @@ namespace TodoManager.WPF
 
             // TODO: try-catch
             // TODO: _todoService.AddTodo(addWindow.TodoTitle, addWindow.TodoDescription, addWindow.TodoDueDate);
+            // TODO: RefreshTodos();
             try
             {
                 _todoService.AddTodo(addWindow.TodoTitle, addWindow.TodoDescription, addWindow.TodoDueDate);
@@ -93,25 +104,80 @@ namespace TodoManager.WPF
             catch (InvalidOperationException ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
-                throw;
             }
-            // TODO: RefreshTodos();
-            RefreshTodos();
+            catch (Exception ex)  // Catches ANY exception
+            {
+                MessageBox.Show("Unexpected error: " + ex.Message);
+            }
+            finally
+            {
+                RefreshTodos();
+            }
         }
 
         private void CompleteButton_Click(object sender, RoutedEventArgs e)
         {
+            // TODO: selected todo ophalen.
 
+            //TodoItem? todoItem = todosListBox.SelectedItem as TodoItem;
+            //if (todoItem == null)
+            //{
+            //    ClearDetails()
+            //    return;
+            //}
+
+            if (todosListBox.SelectedItem is TodoItem todoItem)
+            {
+                // TODO: try-catch
+                try
+                {
+                    todoItem.MarkAsCompleted();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unexpected error: " + ex.Message);
+                }
+
+                // TODO: _todoService.CompleteTodo(selectedTodo);
+                _todoService.CompleteTodo(todoItem);
+                // TODO: RefreshTodos();
+                RefreshTodos();
+            }
+            else
+            {
+                ClearDetails();
+                return;
+            }
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-
+            // TODO: selected todo ophalen
+            if (todosListBox.SelectedItem is TodoItem todoItem)
+            {
+                // TODO: try-catch
+                // TODO: _todoService.DeleteTodo(selectedTodo);
+                try
+                {
+                    _todoService.DeleteTodo(todoItem);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unexpected error: " + ex.Message);
+                }
+                // TODO: RefreshTodos();
+                RefreshTodos();
+            }
+            else
+            {
+                ClearDetails();
+                return;
+            }
         }
 
         private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
-
+            RefreshTodos();
         }
     }
 }

@@ -20,7 +20,7 @@ namespace TodoManager.Application.Services
 
         public List<TodoItem> GetTodos()
         {
-            // TODO: return alle todos via repository
+            // TODO: return all todos via repository
             return _repository.GetAll();
         }
 
@@ -35,6 +35,7 @@ namespace TodoManager.Application.Services
             TodoItem todoItem = new TodoItem(title, description, dueDate);
             _repository.Add(todoItem);
         }
+
         public void CompleteTodo(TodoItem todo)
         {
             // TODO: zoek het item in de repository (TIP: `Get(todo.id)`)
@@ -46,12 +47,12 @@ namespace TodoManager.Application.Services
         {
             if (todo.DueDate.Date < DateTime.Today)
             {
-                throw new InvalidOperationException("...");
+                throw new InvalidOperationException("Todo DueDate cannot be in the past");
             }
 
             if (todo.IsCompleted)
             {
-                throw new InvalidOperationException("...");
+                throw new InvalidOperationException("Todo cannot be completed");
             }
 
             _repository.Remove(todo);

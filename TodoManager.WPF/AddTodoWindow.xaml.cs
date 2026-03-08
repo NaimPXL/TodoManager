@@ -41,7 +41,8 @@ namespace TodoManager.WPF
                 MessageBox.Show("Please select a date");
                 return;
             }
-            this.TodoDueDate = dueDatePicker.SelectedDate.Value;
+
+            this.TodoDueDate = dueDatePicker.SelectedDate!.Value;
 
             this.DialogResult = true;
             this.Close();

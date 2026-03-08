@@ -9,7 +9,7 @@ namespace TodoManager.Infrastructure.Repositories
 {
     public class TodoRepository
     {
-        private readonly List<TodoItem>? _todos;
+        private readonly List<TodoItem> _todos;
 
         public TodoRepository()
         {
@@ -32,9 +32,11 @@ namespace TodoManager.Infrastructure.Repositories
             // TIP: Count + 1
             // TODO: Add to _todos
 
-            item.Id = _todos?.Max(t => t.Id) + 1 ?? 0;
+            //item.Id = _todos?.Max(t => t.Id) + 1 ?? 0;
+            //item.Id = (_todos!.Count > 0 ? _todos.Max(t => t.Id) : 0) + 1;
+            item.Id = (_todos.Max(t => (int?)t.Id) ?? 0) + 1;
+            
             _todos.Add(item);
-
         }
 
         public bool Remove(TodoItem item)
