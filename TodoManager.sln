@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.37012.4 d17.14
+VisualStudioVersion = 17.14.37012.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoManager.WPF", "TodoManager.WPF\TodoManager.WPF.csproj", "{CC736000-F064-4EC1-8B71-06FF8412B8BF}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoManager.Application", "TodoManager.Application\TodoManager.Application.csproj", "{F627EB08-C58B-4CFF-B4A6-C69FE91D3D52}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoManager.Infrastructure", "TodoManager.Infrastructure\TodoManager.Infrastructure.csproj", "{2371880A-B44C-4126-8FB0-0EDF4FFD50C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoManager.Domain.Tests", "TodoManager.Domain.Tests\TodoManager.Domain.Tests.csproj", "{6D0C88D9-9038-4FA6-BF1D-E25C1ABE4BCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoManager.Application.Tests", "TodoManager.Application.Tests\TodoManager.Application.Tests.csproj", "{94D22977-613B-4831-81CD-6157A5D32B97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{2371880A-B44C-4126-8FB0-0EDF4FFD50C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2371880A-B44C-4126-8FB0-0EDF4FFD50C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2371880A-B44C-4126-8FB0-0EDF4FFD50C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D0C88D9-9038-4FA6-BF1D-E25C1ABE4BCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D0C88D9-9038-4FA6-BF1D-E25C1ABE4BCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D0C88D9-9038-4FA6-BF1D-E25C1ABE4BCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D0C88D9-9038-4FA6-BF1D-E25C1ABE4BCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94D22977-613B-4831-81CD-6157A5D32B97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94D22977-613B-4831-81CD-6157A5D32B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94D22977-613B-4831-81CD-6157A5D32B97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94D22977-613B-4831-81CD-6157A5D32B97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
